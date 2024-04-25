@@ -1,8 +1,17 @@
 package siddham.models;
 
 public class Symbol {
-    char ch;
-    public Symbol(char ch){
-        this.ch = ch;
+    private char aChar;
+
+    public Symbol(char aChar) {
+        this.aChar = aChar;
+    }
+
+    public char getaChar() {
+        return aChar;
+    }
+
+    public void setaChar(char aChar) {
+        this.aChar = aChar;
     }
 }

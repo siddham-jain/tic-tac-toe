@@ -1,19 +1,54 @@
 package siddham.models;
 import java.util.List;
 import java.util.ArrayList;
-public class Board {
-    int size;
-    List<List<Cell>> board;
 
-    public Board(int size){
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Board {
+    private int size;
+    private List<List<Cell>> board;
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
         this.size = size;
-        board = new ArrayList<List<Cell>>();
-        for(int i = 0; i < size; i++){
-            List<Cell> row = new ArrayList<Cell>();
-            for(int j = 0; j < size; j++){
-                row.add(new Cell(i, j));
+    }
+
+    public List<List<Cell>> getBoard() {
+        return board;
+    }
+
+    public void setBoard(List<List<Cell>> board) {
+        this.board = board;
+    }
+
+    public Board(int size) {
+        this.size = size;
+        board = new ArrayList<>();
+
+        for (int i = 0; i < size; i++) {
+            board.add(new ArrayList<>());
+
+            for (int j = 0; j < size; j++) {
+                board.get(i).add(new Cell(i, j));
             }
-            board.add(row);
+        }
+    }
+
+    public void printBoard() {
+        for (List<Cell> row : board) {
+            for (Cell cell : row) {
+                if (cell.getCellState().equals(CellState.EMPTY)) {
+                    System.out.print("| -- |");
+                } else {
+                    System.out.print("| " + cell.getPlayer().getSymbol().getaChar() + " |");
+                }
+            }
+            System.out.println();
         }
     }
 }
